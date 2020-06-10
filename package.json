@@ -1,0 +1,61 @@
+{
+  "name": "react-boilerplate-component",
+  "version": "0.2.1",
+  "homepage": "./",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "lodash": "^4.17.15",
+    "pandasuite-bridge": "^4.2.1",
+    "pandasuite-bridge-react": "^1.2.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.0",
+    "react-app-polyfill": "^1.0.6",
+    "react-dom": "^16.13.0",
+    "react-scripts": "3.4.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build && cd build && zip -r -X '../pandasuite-component.zip' *",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "release": "yarn build && release-it --no-npm.publish"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all",
+      "IE >= 9",
+      "Android > 0",
+      "iOS > 0"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.18.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "release-it": "^13.0.1"
+  },
+  "release-it": {
+    "github": {
+      "release": true,
+      "assets": [
+        "pandasuite-component.zip"
+      ]
+    }
+  }
+}
