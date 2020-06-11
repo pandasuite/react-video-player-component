@@ -7,21 +7,18 @@
       "actions": [
         {
           "id": "toMarker",
-          "name": "Change Image",
+          "name": "Change Time",
           "locale_name": {
-            "fr_FR": "Change Image"
-          },
-          "params": [
-            { "id": "useless", "name": "Useless", "locale_name": {"fr_FR": "Inutile"}, "type": "Boolean" }
-          ]
+            "fr_FR": "Changer Temps"
+          }
         }
       ],
       "events": [
         {
           "id": "triggerMarker",
-          "name": "Image",
+          "name": "Time",
           "locale_name": {
-            "fr_FR": "Image"
+            "fr_FR": "Temps"
           }
         }
       ],
@@ -31,68 +28,268 @@
             { "id": "src", "name": "Source", "locale_name": {"fr_FR": "Source"}, "type": "String" }
           ]
         }
+      ],
+      "controls": [
+        {
+          "id": "setSnapshotData",
+          "name": "Add Time",
+          "locale_name": {
+            "fr_FR": "Ajouter Temps"
+          }
+        }
       ]
     },
 
+    "controls": [
+      {
+        "id": "controlBar",
+        "name": "Play video",
+        "locale_name": {
+          "fr_FR": "Lecture de la vidéo"
+        },
+        "type": "Player",
+        "args": {
+          "format": "time"
+        },
+        "value": {
+          "minSeek": 0,
+          "maxSeek": -1,
+          "currentSeek": 0
+        },
+        "listeners": {
+          "play": {
+            "action_id": "play",
+            "event_id": "onStartingPlay"
+          },
+          "pause": {
+            "action_id": "pause",
+            "event_id": "onPausePlaying"
+          },
+          "stop": {
+            "action_id": "stop",
+            "event_id": "onStoppingPlay"
+          },
+          "seek": {
+            "action_id": "seek",
+            "action_params": {
+              "frame": {
+                "param_id": "seconds"
+              }
+            }
+          }
+        }
+      }
+    ],
+
     "properties": [
       {
-        "id": "searchTerm",
-        "name": "Search Term",
+        "id": "url",
+        "name": "URL",
         "locale_name": {
-          "fr_FR": "Terme de recherche"
+          "fr_FR": "URL"
         },
         "type": "String",
-        "value": "panda"
+        "value": "https://www.youtube.com/watch?v=CSmsfK_EpnA"
+      },
+      {
+        "id": "controls",
+        "name": "Player controls",
+        "locale_name": {
+          "fr_FR": "Contrôles du lecteur"
+        },
+        "type": "Boolean",
+        "value": false
+      },
+      {
+        "id": "autoPlay",
+        "name": "Auto play",
+        "locale_name": {
+          "fr_FR": "Lecture auto."
+        },
+        "type": "Boolean",
+        "value": false
+      },
+      {
+        "id": "loop",
+        "name": "Loop mode",
+        "locale_name": {
+          "fr_FR": "En boucle"
+        },
+        "type": "Boolean",
+        "value": false
+      },
+      {
+        "id": "volume",
+        "name": "Volume",
+        "locale_name": {
+          "fr_FR": "Volume"
+        },
+        "type": "Float",
+        "value": 1
+      },
+      {
+        "id": "playbackRate",
+        "name": "Rate",
+        "locale_name": {
+          "fr_FR": "Vitesse"
+        },
+        "type": "Float",
+        "value": 1
       }
     ],
   
     "events": [
       {
-        "id": "imageChanged",
-        "name": "Image Changed",
+        "id": "onStartingPlay",
+        "name": "Starting play",
         "locale_name": {
-          "fr_FR": "Image Changée"
+          "fr_FR": "Commence lecture"
+        }
+      },
+      {
+        "id": "onPausePlaying",
+        "name": "Pause playing",
+        "locale_name": {
+          "fr_FR": "Mise en pause"
+        }
+      },
+      {
+        "id": "onFinishPlaying",
+        "name": "Finish playing",
+        "locale_name": {
+          "fr_FR": "Fin lecture"
         }
       }
     ],
   
     "actions": [
       {
-        "id": "changeColor",
-        "name": "Change Color",
+        "id": "playPause",
+        "name": "Play/Pause",
+        "locale_name": {
+          "fr_FR": "Lecture/Pause"
+        }
+      },
+      {
+        "id": "play",
+        "name": "Play",
+        "locale_name": {
+          "fr_FR": "Lecture"
+        }
+      },
+      {
+        "id": "pause",
+        "name": "Pause",
+        "locale_name": {
+          "fr_FR": "Mettre en pause"
+        }
+      },
+      {
+        "id": "seek",
+        "name": "Seek",
+        "locale_name": {
+          "fr_FR": "Aller à"
+        },
         "params": [
-          {
-            "id": "backgroundColor",
-            "name": "Background Color",
-            "locale_name": {
-              "fr_FR": "Couleur de fond"
-            },
-            "type": "String",
-            "value": "#FFFFFF"
-          }
+          { "id": "seconds", "name": "Seconds", "locale_name": {"fr_FR": "Secondes"}, "type": "Integer", "value": 0 }
+        ]
+      },
+      {
+        "id": "forward",
+        "name": "Forward",
+        "locale_name": {
+          "fr_FR": "Avancer"
+        },
+        "params": [
+          { "id": "seconds", "name": "Seconds", "locale_name": {"fr_FR": "Secondes"}, "type": "Integer", "value": 1 }
+        ]
+      },
+      {
+        "id": "rewind",
+        "name": "Rewind",
+        "locale_name": {
+          "fr_FR": "Reculer"
+        },
+        "params": [
+          { "id": "seconds", "name": "Seconds", "locale_name": {"fr_FR": "Secondes"}, "type": "Integer", "value": 1 }
+        ]
+      },
+      {
+        "id": "restartFromBeginning",
+        "name": "Restart from beginning",
+        "locale_name": {
+          "fr_FR": "Redémarrer au début"
+        }
+      },
+      {
+        "id": "setVolume",
+        "name": "Set volume",
+        "locale_name": {
+          "fr_FR": "Mettre le volume"
+        },
+        "params": [
+          { "id": "volume", "name": "Volume", "locale_name": {"fr_FR": "Volume"}, "type": "Float", "value": 1 }
+        ]
+      },
+      {
+        "id": "increaseVolume",
+        "name": "Increase volume",
+        "locale_name": {
+          "fr_FR": "Augmenter le volume"
+        },
+        "params": [
+          { "id": "volume", "name": "Volume", "locale_name": {"fr_FR": "Volume"}, "type": "Float", "value": 0.1 }
+        ]
+      },
+      {
+        "id": "decreaseVolume",
+        "name": "Decrease volume",
+        "locale_name": {
+          "fr_FR": "Diminuer le volume"
+        },
+        "params": [
+          { "id": "volume", "name": "Volume", "locale_name": {"fr_FR": "Volume"}, "type": "Float", "value": 0.1 }
+        ]
+      },
+      {
+        "id": "setSpeed",
+        "name": "Set speed",
+        "locale_name": {
+          "fr_FR": "Mettre la vitesse"
+        },
+        "params": [
+          { "id": "speed", "name": "Speed", "locale_name": {"fr_FR": "Vitesse"}, "type": "Float", "value": 1 }
+        ]
+      },
+      {
+        "id": "increaseSpeed",
+        "name": "Increase speed",
+        "locale_name": {
+          "fr_FR": "Augmenter la vitesse"
+        },
+        "params": [
+          { "id": "speed", "name": "Speed", "locale_name": {"fr_FR": "Vitesse"}, "type": "Float", "value": 1 }
+        ]
+      },
+      {
+        "id": "decreaseSpeed",
+        "name": "Decrease speed",
+        "locale_name": {
+          "fr_FR": "Diminuer la vitesse"
+        },
+        "params": [
+          { "id": "speed", "name": "Speed", "locale_name": {"fr_FR": "Vitesse"}, "type": "Float", "value": 1 }
         ]
       }
     ],
 
     "synchronization": [
       {
-        "id": "synchroImages",
-        "name": "Synchronize images",
+        "id": "time",
+        "name": "Synchronize time",
         "locale_name": {
-          "fr_FR": "Synchroniser images"
+          "fr_FR": "Synchroniser temps"
         }
-      }
-    ],
-  
-    "resources": [
-      {
-        "id": "my_image.png",
-        "name": "Example image",
-        "locale_name": {
-          "fr_FR": "Image exemple"
-        },
-        "type": "Image",
-        "localization": false
       }
     ]
 }
