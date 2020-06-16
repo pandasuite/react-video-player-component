@@ -22,11 +22,6 @@
           }
         }
       ],
-      "markers": [
-        {
-          "hideSystemId": true
-        }
-      ],
       "controls": [
         {
           "id": "setSnapshotData",
