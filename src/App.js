@@ -42,6 +42,7 @@ function App() {
           setExternalProps({ ...externalProps, playing: false });
         },
         stop: () => {
+          PandaBridge.send('onFinishPlaying');
           window.location.reload();
         },
         seek: ({ seconds }) => {

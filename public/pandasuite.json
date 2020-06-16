@@ -24,9 +24,7 @@
       ],
       "markers": [
         {
-          "params": [
-            { "id": "src", "name": "Source", "locale_name": {"fr_FR": "Source"}, "type": "String" }
-          ]
+          "hideSystemId": true
         }
       ],
       "controls": [
@@ -37,7 +35,20 @@
             "fr_FR": "Ajouter Temps"
           }
         }
-      ]
+      ],
+      "defaults": {
+        "markers": {
+          "description": {
+            "value": "%s",
+            "args": [
+              {
+                "key": "id",
+                "format": "00:00:00"
+              }
+            ]
+          }
+        }
+      }
     },
 
     "controls": [
@@ -49,7 +60,7 @@
         },
         "type": "Player",
         "args": {
-          "format": "time"
+          "format": "00:00:00"
         },
         "value": {
           "minSeek": 0,
@@ -67,7 +78,7 @@
           },
           "stop": {
             "action_id": "stop",
-            "event_id": "onStoppingPlay"
+            "event_id": "onFinishPlaying"
           },
           "seek": {
             "action_id": "seek",
