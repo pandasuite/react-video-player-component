@@ -95,7 +95,8 @@
           "fr_FR": "URL"
         },
         "type": "String",
-        "value": "https://www.youtube.com/watch?v=CSmsfK_EpnA"
+        "value": "https://www.youtube.com/watch?v=CSmsfK_EpnA",
+        "bindable": true
       },
       {
         "id": "controls",
