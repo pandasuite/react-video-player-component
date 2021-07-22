@@ -96,6 +96,10 @@
         },
         "type": "String",
         "value": "https://www.youtube.com/watch?v=CSmsfK_EpnA",
+        "bind": {
+          "style": "TextArea",
+          "lines": 1
+        },
         "bindable": true
       },
       {
