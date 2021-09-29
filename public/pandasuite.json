@@ -113,9 +113,9 @@
       },
       {
         "id": "autoPlay",
-        "name": "Auto play",
+        "name": "Autoplay",
         "locale_name": {
-          "fr_FR": "Lecture auto."
+          "fr_FR": "Lecture automatique"
         },
         "type": "Boolean",
         "value": false
