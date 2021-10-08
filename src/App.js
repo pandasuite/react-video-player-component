@@ -16,7 +16,7 @@ function App() {
   const {
     properties,
     markers,
-  } = usePandaBridge({},
+  } = usePandaBridge(
     {
       markers: {
         getSnapshotDataHook: () => {
