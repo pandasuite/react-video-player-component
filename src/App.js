@@ -96,7 +96,8 @@ function App() {
           }
         },
       },
-    });
+    },
+  );
 
   if (_.isEmpty(properties)) {
     return null;
