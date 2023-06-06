@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && cd build && zip -r -X '../pandasuite-component.zip' *",
+    "build": "rm -f ./pandasuite-component.zip && react-scripts build && cd build && zip -r -X '../pandasuite-component.zip' *",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "release": "yarn build && release-it --no-npm.publish"
