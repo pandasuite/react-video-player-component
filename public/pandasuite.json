@@ -1,308 +1,385 @@
 {
-    "version": "2.0.0",
-    "main": "",
-  
-    "system": {
-      "localization": false,
-      "actions": [
-        {
-          "id": "toMarker",
-          "name": "Change Time",
-          "locale_name": {
-            "fr_FR": "Changer Temps"
-          }
-        }
-      ],
-      "events": [
-        {
-          "id": "triggerMarker",
-          "name": "Time",
-          "locale_name": {
-            "fr_FR": "Temps"
-          }
-        }
-      ],
-      "controls": [
-        {
-          "id": "setSnapshotData",
-          "name": "Add Time",
-          "locale_name": {
-            "fr_FR": "Ajouter Temps"
-          }
-        }
-      ],
-      "defaults": {
-        "markers": {
-          "description": {
-            "value": "%s",
-            "args": [
-              {
-                "key": "id",
-                "format": "00:00:00"
-              }
-            ]
-          }
+  "version": "2.0.0",
+  "main": "",
+
+  "system": {
+    "localization": false,
+    "actions": [
+      {
+        "id": "toMarker",
+        "name": "Change Time",
+        "locale_name": {
+          "fr_FR": "Changer Temps"
         }
       }
-    },
-
+    ],
+    "events": [
+      {
+        "id": "triggerMarker",
+        "name": "Time",
+        "locale_name": {
+          "fr_FR": "Temps"
+        }
+      }
+    ],
     "controls": [
       {
-        "id": "controlBar",
-        "name": "Play video",
+        "id": "setSnapshotData",
+        "name": "Add Time",
         "locale_name": {
-          "fr_FR": "Lecture de la vidéo"
+          "fr_FR": "Ajouter Temps"
+        }
+      }
+    ],
+    "defaults": {
+      "markers": {
+        "description": {
+          "value": "%s",
+          "args": [
+            {
+              "key": "id",
+              "format": "00:00:00"
+            }
+          ]
+        }
+      }
+    }
+  },
+
+  "controls": [
+    {
+      "id": "controlBar",
+      "name": "Play video",
+      "locale_name": {
+        "fr_FR": "Lecture de la vidéo"
+      },
+      "type": "Player",
+      "args": {
+        "format": "00:00:00"
+      },
+      "value": {
+        "minSeek": 0,
+        "maxSeek": -1,
+        "currentSeek": 0
+      },
+      "listeners": {
+        "play": {
+          "action_id": "play",
+          "event_id": "onStartingPlay"
         },
-        "type": "Player",
-        "args": {
-          "format": "00:00:00"
+        "pause": {
+          "action_id": "pause",
+          "event_id": "onPausePlaying"
         },
-        "value": {
-          "minSeek": 0,
-          "maxSeek": -1,
-          "currentSeek": 0
+        "stop": {
+          "action_id": "stop",
+          "event_id": "onFinishPlaying"
         },
-        "listeners": {
-          "play": {
-            "action_id": "play",
-            "event_id": "onStartingPlay"
-          },
-          "pause": {
-            "action_id": "pause",
-            "event_id": "onPausePlaying"
-          },
-          "stop": {
-            "action_id": "stop",
-            "event_id": "onFinishPlaying"
-          },
-          "seek": {
-            "action_id": "seek",
-            "action_params": {
-              "frame": {
-                "param_id": "seconds"
-              }
+        "seek": {
+          "action_id": "seek",
+          "action_params": {
+            "frame": {
+              "param_id": "seconds"
             }
           }
         }
       }
-    ],
+    }
+  ],
 
-    "properties": [
-      {
-        "id": "url",
-        "name": "URL",
-        "locale_name": {
-          "fr_FR": "URL"
-        },
-        "type": "String",
-        "value": "https://www.youtube.com/watch?v=CSmsfK_EpnA",
-        "bind": {
-          "style": "TextArea",
-          "lines": 1
-        },
-        "bindable": true,
-        "required": true
+  "properties": [
+    {
+      "id": "url",
+      "name": "URL",
+      "locale_name": {
+        "fr_FR": "URL"
       },
-      {
-        "id": "controls",
-        "name": "Player controls",
-        "locale_name": {
-          "fr_FR": "Contrôles du lecteur"
-        },
-        "type": "Boolean",
-        "value": false
+      "type": "String",
+      "value": "https://www.youtube.com/watch?v=CSmsfK_EpnA",
+      "bind": {
+        "style": "TextArea",
+        "lines": 1
       },
-      {
-        "id": "autoPlay",
-        "name": "Autoplay",
-        "locale_name": {
-          "fr_FR": "Lecture automatique"
-        },
-        "type": "Boolean",
-        "value": false
+      "bindable": true,
+      "required": true
+    },
+    {
+      "id": "controls",
+      "name": "Player controls",
+      "locale_name": {
+        "fr_FR": "Contrôles du lecteur"
       },
-      {
-        "id": "loop",
-        "name": "Loop mode",
-        "locale_name": {
-          "fr_FR": "En boucle"
-        },
-        "type": "Boolean",
-        "value": false
+      "type": "Boolean",
+      "value": false
+    },
+    {
+      "id": "autoPlay",
+      "name": "Autoplay",
+      "locale_name": {
+        "fr_FR": "Lecture automatique"
       },
-      {
-        "id": "volume",
-        "name": "Volume",
-        "locale_name": {
-          "fr_FR": "Volume"
-        },
-        "type": "Float",
-        "value": 1
+      "type": "Boolean",
+      "value": false
+    },
+    {
+      "id": "loop",
+      "name": "Loop mode",
+      "locale_name": {
+        "fr_FR": "En boucle"
       },
-      {
-        "id": "playbackRate",
-        "name": "Rate",
-        "locale_name": {
-          "fr_FR": "Vitesse"
-        },
-        "type": "Float",
-        "value": 1
-      }
-    ],
-  
-    "events": [
-      {
-        "id": "onStartingPlay",
-        "name": "Starting play",
-        "locale_name": {
-          "fr_FR": "Commence lecture"
-        }
+      "type": "Boolean",
+      "value": false
+    },
+    {
+      "id": "volume",
+      "name": "Volume",
+      "locale_name": {
+        "fr_FR": "Volume"
       },
-      {
-        "id": "onPausePlaying",
-        "name": "Pause playing",
-        "locale_name": {
-          "fr_FR": "Mise en pause"
-        }
+      "type": "Float",
+      "value": 1
+    },
+    {
+      "id": "playbackRate",
+      "name": "Rate",
+      "locale_name": {
+        "fr_FR": "Vitesse"
       },
-      {
-        "id": "onFinishPlaying",
-        "name": "Finish playing",
-        "locale_name": {
-          "fr_FR": "Fin lecture"
-        }
-      }
-    ],
-  
-    "actions": [
-      {
-        "id": "playPause",
-        "name": "Play/Pause",
-        "locale_name": {
-          "fr_FR": "Lecture/Pause"
-        }
-      },
-      {
-        "id": "play",
-        "name": "Play",
-        "locale_name": {
-          "fr_FR": "Lecture"
-        }
-      },
-      {
-        "id": "pause",
-        "name": "Pause",
-        "locale_name": {
-          "fr_FR": "Mettre en pause"
-        }
-      },
-      {
-        "id": "seek",
-        "name": "Seek",
-        "locale_name": {
-          "fr_FR": "Aller à"
-        },
-        "params": [
-          { "id": "seconds", "name": "Seconds", "locale_name": {"fr_FR": "Secondes"}, "type": "Integer", "value": 0 }
-        ]
-      },
-      {
-        "id": "forward",
-        "name": "Forward",
-        "locale_name": {
-          "fr_FR": "Avancer"
-        },
-        "params": [
-          { "id": "seconds", "name": "Seconds", "locale_name": {"fr_FR": "Secondes"}, "type": "Integer", "value": 1 }
-        ]
-      },
-      {
-        "id": "rewind",
-        "name": "Rewind",
-        "locale_name": {
-          "fr_FR": "Reculer"
-        },
-        "params": [
-          { "id": "seconds", "name": "Seconds", "locale_name": {"fr_FR": "Secondes"}, "type": "Integer", "value": 1 }
-        ]
-      },
-      {
-        "id": "restartFromBeginning",
-        "name": "Restart from beginning",
-        "locale_name": {
-          "fr_FR": "Redémarrer au début"
-        }
-      },
-      {
-        "id": "setVolume",
-        "name": "Set volume",
-        "locale_name": {
-          "fr_FR": "Mettre le volume"
-        },
-        "params": [
-          { "id": "volume", "name": "Volume", "locale_name": {"fr_FR": "Volume"}, "type": "Float", "value": 1 }
-        ]
-      },
-      {
-        "id": "increaseVolume",
-        "name": "Increase volume",
-        "locale_name": {
-          "fr_FR": "Augmenter le volume"
-        },
-        "params": [
-          { "id": "volume", "name": "Volume", "locale_name": {"fr_FR": "Volume"}, "type": "Float", "value": 0.1 }
-        ]
-      },
-      {
-        "id": "decreaseVolume",
-        "name": "Decrease volume",
-        "locale_name": {
-          "fr_FR": "Diminuer le volume"
-        },
-        "params": [
-          { "id": "volume", "name": "Volume", "locale_name": {"fr_FR": "Volume"}, "type": "Float", "value": 0.1 }
-        ]
-      },
-      {
-        "id": "setSpeed",
-        "name": "Set speed",
-        "locale_name": {
-          "fr_FR": "Mettre la vitesse"
-        },
-        "params": [
-          { "id": "speed", "name": "Speed", "locale_name": {"fr_FR": "Vitesse"}, "type": "Float", "value": 1 }
-        ]
-      },
-      {
-        "id": "increaseSpeed",
-        "name": "Increase speed",
-        "locale_name": {
-          "fr_FR": "Augmenter la vitesse"
-        },
-        "params": [
-          { "id": "speed", "name": "Speed", "locale_name": {"fr_FR": "Vitesse"}, "type": "Float", "value": 1 }
-        ]
-      },
-      {
-        "id": "decreaseSpeed",
-        "name": "Decrease speed",
-        "locale_name": {
-          "fr_FR": "Diminuer la vitesse"
-        },
-        "params": [
-          { "id": "speed", "name": "Speed", "locale_name": {"fr_FR": "Vitesse"}, "type": "Float", "value": 1 }
-        ]
-      }
-    ],
+      "type": "Float",
+      "value": 1
+    }
+  ],
 
-    "synchronization": [
-      {
-        "id": "time",
-        "name": "Synchronize time",
-        "locale_name": {
-          "fr_FR": "Synchroniser temps"
-        }
+  "events": [
+    {
+      "id": "onStartingPlay",
+      "name": "Starting play",
+      "locale_name": {
+        "fr_FR": "Commence lecture"
       }
-    ]
+    },
+    {
+      "id": "onPausePlaying",
+      "name": "Pause playing",
+      "locale_name": {
+        "fr_FR": "Mise en pause"
+      }
+    },
+    {
+      "id": "onFinishPlaying",
+      "name": "Finish playing",
+      "locale_name": {
+        "fr_FR": "Fin lecture"
+      }
+    }
+  ],
+
+  "actions": [
+    {
+      "id": "playPause",
+      "name": "Play/Pause",
+      "locale_name": {
+        "fr_FR": "Lecture/Pause"
+      }
+    },
+    {
+      "id": "play",
+      "name": "Play",
+      "locale_name": {
+        "fr_FR": "Lecture"
+      }
+    },
+    {
+      "id": "pause",
+      "name": "Pause",
+      "locale_name": {
+        "fr_FR": "Mettre en pause"
+      }
+    },
+    {
+      "id": "seek",
+      "name": "Seek",
+      "locale_name": {
+        "fr_FR": "Aller à"
+      },
+      "params": [
+        {
+          "id": "seconds",
+          "name": "Seconds",
+          "locale_name": { "fr_FR": "Secondes" },
+          "type": "Integer",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "forward",
+      "name": "Forward",
+      "locale_name": {
+        "fr_FR": "Avancer"
+      },
+      "params": [
+        {
+          "id": "seconds",
+          "name": "Seconds",
+          "locale_name": { "fr_FR": "Secondes" },
+          "type": "Integer",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "rewind",
+      "name": "Rewind",
+      "locale_name": {
+        "fr_FR": "Reculer"
+      },
+      "params": [
+        {
+          "id": "seconds",
+          "name": "Seconds",
+          "locale_name": { "fr_FR": "Secondes" },
+          "type": "Integer",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "restartFromBeginning",
+      "name": "Restart from beginning",
+      "locale_name": {
+        "fr_FR": "Redémarrer au début"
+      }
+    },
+    {
+      "id": "setVolume",
+      "name": "Set volume",
+      "locale_name": {
+        "fr_FR": "Mettre le volume"
+      },
+      "params": [
+        {
+          "id": "volume",
+          "name": "Volume",
+          "locale_name": { "fr_FR": "Volume" },
+          "type": "Float",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "increaseVolume",
+      "name": "Increase volume",
+      "locale_name": {
+        "fr_FR": "Augmenter le volume"
+      },
+      "params": [
+        {
+          "id": "volume",
+          "name": "Volume",
+          "locale_name": { "fr_FR": "Volume" },
+          "type": "Float",
+          "value": 0.1
+        }
+      ]
+    },
+    {
+      "id": "decreaseVolume",
+      "name": "Decrease volume",
+      "locale_name": {
+        "fr_FR": "Diminuer le volume"
+      },
+      "params": [
+        {
+          "id": "volume",
+          "name": "Volume",
+          "locale_name": { "fr_FR": "Volume" },
+          "type": "Float",
+          "value": 0.1
+        }
+      ]
+    },
+    {
+      "id": "setSpeed",
+      "name": "Set speed",
+      "locale_name": {
+        "fr_FR": "Mettre la vitesse"
+      },
+      "params": [
+        {
+          "id": "speed",
+          "name": "Speed",
+          "locale_name": { "fr_FR": "Vitesse" },
+          "type": "Float",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "increaseSpeed",
+      "name": "Increase speed",
+      "locale_name": {
+        "fr_FR": "Augmenter la vitesse"
+      },
+      "params": [
+        {
+          "id": "speed",
+          "name": "Speed",
+          "locale_name": { "fr_FR": "Vitesse" },
+          "type": "Float",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "decreaseSpeed",
+      "name": "Decrease speed",
+      "locale_name": {
+        "fr_FR": "Diminuer la vitesse"
+      },
+      "params": [
+        {
+          "id": "speed",
+          "name": "Speed",
+          "locale_name": { "fr_FR": "Vitesse" },
+          "type": "Float",
+          "value": 1
+        }
+      ]
+    }
+  ],
+
+  "synchronization": [
+    {
+      "id": "time",
+      "name": "Synchronize time",
+      "locale_name": {
+        "fr_FR": "Synchroniser temps"
+      }
+    }
+  ],
+
+  "queryable": {
+    "currentValue": 0,
+    "duration": 0,
+    "playing": false,
+    "__desc_currentValue": {
+      "name": "Current value",
+      "locale_name": {
+        "fr_FR": "Valeur actuelle"
+      }
+    },
+    "__desc_duration": {
+      "name": "Duration",
+      "locale_name": {
+        "fr_FR": "Durée"
+      }
+    },
+    "__desc_playing": {
+      "name": "Is Playing",
+      "locale_name": {
+        "fr_FR": "Est en cours de lecture"
+      }
+    }
+  }
 }
-  
